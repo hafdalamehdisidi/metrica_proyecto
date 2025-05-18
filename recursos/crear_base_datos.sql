@@ -24,3 +24,13 @@ CREATE TABLE reservas (
                           FOREIGN KEY (cliente_id) REFERENCES clientes(id),
                           FOREIGN KEY (mesa_id) REFERENCES mesas(id)
 );
+
+INSERT INTO mesas (numero, capacidad) VALUES 
+(1, 2),
+(2, 2),
+(3, 4),
+(4, 4),
+(5, 6),
+(6, 6),
+(7, 8),
+(8, 8);
