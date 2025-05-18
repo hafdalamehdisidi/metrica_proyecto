@@ -39,9 +39,9 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return String.format("Mesa %d - %s - %s %s - %d personas", 
-            mesa.getNumero(), 
-            hora.toString(), 
+        return String.format("Mesa %d - %s - %s %s - %d personas",
+            mesa.getNumero(),
+            hora.toString(),
             cliente.getNombre(),
             cliente.getApellidos(),
             numPersonas);
