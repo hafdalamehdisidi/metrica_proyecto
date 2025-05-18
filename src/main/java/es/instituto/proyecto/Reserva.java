@@ -10,6 +10,7 @@ public class Reserva {
     private LocalDate fecha;
     private LocalTime hora;
     private int numPersonas;
+    private String estado;
 
     public Reserva(Cliente cliente, Mesa mesa, LocalDate fecha, LocalTime hora, int numPersonas) {
         this.cliente = cliente;
@@ -17,6 +18,7 @@ public class Reserva {
         this.fecha = fecha;
         this.hora = hora;
         this.numPersonas = numPersonas;
+        this.estado = "CONFIRMADA";
     }
 
     // Getters y setters
@@ -32,13 +34,16 @@ public class Reserva {
     public void setHora(LocalTime hora) { this.hora = hora; }
     public int getNumPersonas() { return numPersonas; }
     public void setNumPersonas(int numPersonas) { this.numPersonas = numPersonas; }
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
 
     @Override
     public String toString() {
-        return "Reserva para " + cliente.getNombre() + 
-               " - Fecha: " + fecha + 
-               " Hora: " + hora +
-               " - Mesa: " + mesa.getNumero() +
-               " - Personas: " + numPersonas;
+        return String.format("Mesa %d - %s - %s %s - %d personas", 
+            mesa.getNumero(), 
+            hora.toString(), 
+            cliente.getNombre(),
+            cliente.getApellidos(),
+            numPersonas);
     }
 }
