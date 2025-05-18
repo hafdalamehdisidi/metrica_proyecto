@@ -3,6 +3,7 @@ package es.instituto.proyecto;
 import java.util.Scanner;
 import es.instituto.proyecto.util.GestorReservas;
 import es.instituto.proyecto.util.GestorClientes;
+import java.util.List;
 
 public class MenuConsola {
     private Scanner scanner;
@@ -93,6 +94,34 @@ public class MenuConsola {
                     return null;
                 }
             }
+        }
+    }
+	
+    private void mostrarMesasDisponibles() {
+        try {
+            System.out.print("\nIngrese el número de personas: ");
+            int numPersonas = Integer.parseInt(scanner.nextLine());
+            
+            if (numPersonas <= 0) {
+                System.out.println("El número de personas debe ser mayor que 0");
+                return;
+            }
+            
+            List<Mesa> mesasDisponibles = gestor.obtenerMesasDisponibles(numPersonas);
+            
+            if (mesasDisponibles.isEmpty()) {
+                System.out.println("No hay mesas disponibles para " + numPersonas + " personas.");
+                return;
+            }
+            
+            System.out.println("\nMesas disponibles para " + numPersonas + " personas:");
+            for (Mesa mesa : mesasDisponibles) {
+                System.out.println("Mesa " + mesa.getNumero() + 
+                                 " (Capacidad: " + mesa.getCapacidad() + " personas)");
+            }
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Por favor ingrese un número válido.");
         }
     }
 } // Este es el cierre que faltaba
