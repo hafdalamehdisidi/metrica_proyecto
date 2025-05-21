@@ -29,7 +29,7 @@ public class MenuConsola {
             try {
                 mostrarMenuPrincipal();
                 int opcion = Integer.parseInt(scanner.nextLine().trim());
-                
+
                 switch (opcion) {
                     case 1 -> crearReserva();
                     case 2 -> verReservas();
@@ -85,8 +85,8 @@ public class MenuConsola {
 
         System.out.println("\nMesas disponibles:");
         for (Mesa mesa : mesasDisponibles) {
-            System.out.printf("Mesa %d (Capacidad: %d, Ubicación: %s)\n", 
-                            mesa.getNumero(), mesa.getCapacidad(), mesa.getUbicacion());
+            System.out.printf("Mesa %d (Capacidad: %d)\n",
+                    mesa.getNumero(), mesa.getCapacidad());
         }
 
         Mesa mesaSeleccionada = seleccionarMesa(mesasDisponibles);
@@ -103,7 +103,7 @@ public class MenuConsola {
     private Cliente solicitarDatosCliente() {
         System.out.print("Teléfono del cliente: ");
         String telefono = scanner.nextLine().trim();
-        
+
         Cliente cliente = gestorClientes.buscarClientePorTelefono(telefono);
         if (cliente != null) {
             System.out.println("Cliente encontrado: " + cliente.getNombre() + " " + cliente.getApellidos());
@@ -164,9 +164,9 @@ public class MenuConsola {
         try {
             int numeroMesa = Integer.parseInt(scanner.nextLine().trim());
             return mesas.stream()
-                       .filter(m -> m.getNumero() == numeroMesa)
-                       .findFirst()
-                       .orElse(null);
+                    .filter(m -> m.getNumero() == numeroMesa)
+                    .findFirst()
+                    .orElse(null);
         } catch (NumberFormatException e) {
             System.out.println("Número de mesa inválido");
             return null;
