@@ -70,14 +70,12 @@ public List<Mesa> obtenerMesasDisponiblesPorCapacidad(int capacidadMinima) {
 }
     
     public int guardarMesa(Mesa mesa) {
-        // Método existente guardarMesa se mantiene igual
-        // ... código anterior ...
-        // Primero verificamos si la mesa ya existe
+
         String checkSql = "SELECT id FROM mesas WHERE numero = ?";
         String insertSql = "INSERT INTO mesas (numero, capacidad, estado) VALUES (?, ?, ?)";
         
         try (Connection conn = Conexion.conectar()) {
-            // Verificar si la mesa existe
+
             try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
                 checkStmt.setInt(1, mesa.getNumero());
                 ResultSet rs = checkStmt.executeQuery();
@@ -86,7 +84,7 @@ public List<Mesa> obtenerMesasDisponiblesPorCapacidad(int capacidadMinima) {
                 }
             }
             
-            // Si no existe, insertarla
+
             try (PreparedStatement insertStmt = conn.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS)) {
                 insertStmt.setInt(1, mesa.getNumero());
                 insertStmt.setInt(2, mesa.getCapacidad());
