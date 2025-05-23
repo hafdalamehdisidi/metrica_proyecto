@@ -42,7 +42,7 @@ CREATE TABLE reservas
     FOREIGN KEY (mesa_id) REFERENCES mesas (id)
 );
 
--- Insertar algunos datos de prueba (opcional)
+-- Insertar algunos datos de prueba
 INSERT INTO clientes (nombre, apellidos, telefono, email)
 VALUES ('Juan', 'Pérez', '123456789', 'juan@email.com'),
        ('María', 'García', '987654321', 'maria@email.com');
